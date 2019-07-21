@@ -1,0 +1,105 @@
+prefixes:
+  dhb: https://dancebattle.org/ontology/
+  idlab-fn: http://example.com/idlab/function/
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  dhb-battle: https://dancehallbattle.org/battle/
+  dhb-dancer: https://dancehallbattle.org/dancer/
+  dhb-event: https://dancehallbattle.org/event/
+  dhb-organizer: https://dancehallbattle.org/organizer/
+
+mappings:
+  event:
+    sources:
+      - [files/events.csv~csv]
+    s: dhb-event:$(id)
+    po:
+      - [a, dhb:DanceEvent]
+      - [[schema:name, rdfs:label], $(name)]
+      - [schema:location, $(country)]
+      - p: schema:startDate
+        o:
+          value: $(startdate)
+          datatype: schema:Date
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [grel:valueParameter, ""]
+            - [grel:valueParameter2, $(startdate)]
+      - p: schema:endDate
+        o:
+          value: $(enddate)
+          datatype: schema:Date
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [grel:valueParameter, ""]
+            - [grel:valueParameter2, $(enddate)]
+      - p: dhb:hasBattle
+        o:
+          - mapping: battle
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(id)]
+                - [str2, $(eventid)]
+      - p: schema:organizer
+        o:
+          - mapping: organizer
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(id)]
+                - [str2, $(eventid)]
+
+  organizer:
+    sources:
+      - [files/organizers.csv~csv]
+    s: dhb-organizer:$(eventorganiser)
+    po:
+      - [dhb:instagram, $(eventorganiser)]
+
+  battle:
+    sources:
+      - [files/battles.csv~csv]
+    s: dhb-battle:$(id)
+    po:
+      - [a, dhb:DanceBattle]
+      - [dhb:style, dhb:Dancehall~iri]
+      - [schema:startDate, $(date), schema:Date]
+      - [schema:endDate, $(date), schema:Date]
+      - [dhb:amountOfParticipants, $(participantsperbattle), xsd:Integer]
+      - [dhb:level, $(level)]
+      - [dhb:gender, $(gender)]
+      - [dhb:age, $(age)]
+      - [dhb:inviteOnly, $(inviteonly)]
+      - p: schema:name
+        o:
+          value: $(customlabel)
+       #condition:
+       #  function: idlab-fn:notEqual
+       #  parameters:
+       #    - [grel:valueParameter, ""]
+       #    - [grel:valueParameter2, $(customlabel)]
+
+  winner:
+    sources:
+      - [files/winners.csv~csv]
+    s: dhb-dancer:$(id)
+    po:
+      - [a, [dhb:Dancer, schema:Person]]
+      - [schema:name, $(name)]
+      - [dhb:instagram, $(instagram)]
+      - p: dhb:representsCountry
+        o: $(country)
+        #condition:
+        # function: idlab-fn:notEqual
+        # parameters:
+        #   - [grel:valueParameter, ""]
+        #   - [grel:valueParameter2, $(country)]
+
+  battle_winner:
+    sources:
+      - [files/battle_winner.csv~csv]
+    s: dhb-battle:$(battleid)
+    po:
+      - [dhb:hasWinner, dhb-dancer:$(winnerid)~iri]
