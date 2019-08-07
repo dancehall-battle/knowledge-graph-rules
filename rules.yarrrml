@@ -16,6 +16,7 @@ mappings:
       - [a, dhb:DanceEvent]
       - [[schema:name, rdfs:label], $(name)]
       - [schema:location, $(country)]
+      - [dhb:instagram, $(instagram)]
       - p: schema:startDate
         o:
           value: $(startdate)
