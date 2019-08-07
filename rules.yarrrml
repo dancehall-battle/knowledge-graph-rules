@@ -6,6 +6,8 @@ prefixes:
   dhb-dancer: https://dancehallbattle.org/dancer/
   dhb-event: https://dancehallbattle.org/event/
   dhb-organizer: https://dancehallbattle.org/organizer/
+  dhb-fn: https://dancehallbattle.org/function/
+  idlab-fn: http://example.com/idlab/function/
 
 mappings:
   event:
@@ -90,7 +92,13 @@ mappings:
       - [schema:name, $(name)]
       - [dhb:instagram, $(instagram)]
       - p: dhb:representsCountry
-        o: $(country)
+        o:
+          function: dhb-fn:getCountry
+          parameters:
+           - parameter: idlab-fn:str
+             value: $(country)
+          type: iri
+
         #condition:
         # function: idlab-fn:notEqual
         # parameters:
