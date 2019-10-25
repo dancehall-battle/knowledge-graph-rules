@@ -111,4 +111,4 @@ mappings:
       - [files/battle_winner.csv~csv]
     s: dhb-battle:$(battleid)
     po:
-      - [dhb:hasWinner, dhb-dancer:$(winnerid)~iri]
+      - [[dhb:hasWinner, dhb:hasParticipant], dhb-dancer:$(winnerid)~iri]
