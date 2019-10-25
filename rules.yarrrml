@@ -69,18 +69,46 @@ mappings:
       - [schema:startDate, $(date), schema:Date]
       - [schema:endDate, $(date), schema:Date]
       - [dhb:amountOfParticipants, $(participantsperbattle), xsd:Integer]
-      - [dhb:level, $(level)]
-      - [dhb:gender, $(gender)]
-      - [dhb:age, $(age)]
-      - [dhb:inviteOnly, $(inviteonly)]
+      - p: dhb:level
+        o:
+          value: $(level)
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [grel:valueParameter, ""]
+            - [grel:valueParameter2, $(level)]
+      - p: dhb:gender
+        o:
+          value: $(gender)
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [grel:valueParameter, ""]
+            - [grel:valueParameter2, $(gender)]
+      - p: dhb:age
+        o:
+          value: $(age)
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [grel:valueParameter, ""]
+            - [grel:valueParameter2, $(age)]
+      - p: dhb:inviteOnly
+        o:
+          value: $(inviteonly)
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+           - [grel:valueParameter, ""]
+           - [grel:valueParameter2, $(inviteonly)]
       - p: schema:name
         o:
           value: $(customlabel)
-       #condition:
-       #  function: idlab-fn:notEqual
-       #  parameters:
-       #    - [grel:valueParameter, ""]
-       #    - [grel:valueParameter2, $(customlabel)]
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [grel:valueParameter, ""]
+            - [grel:valueParameter2, $(customlabel)]
 
   winner:
     sources:
@@ -88,15 +116,21 @@ mappings:
     s: dhb-dancer:$(id)
     po:
       - [a, [dhb:Dancer, schema:Person]]
-      - [schema:name, $(name)]
-      - [dhb:instagram, $(instagram)]
+      - [schema:name, $(name)]a
+      - p: dhb:instagram
+        o: $(instagram)
+        condition:
+          function: idlab-fn:notEqual
+          parameters:
+            - [grel:valueParameter, ""]
+            - [grel:valueParameter2, $(instagram)]
       - p: dhb:representsCountry
         o: $(country)
-        #condition:
-        # function: idlab-fn:notEqual
-        # parameters:
-        #   - [grel:valueParameter, ""]
-        #   - [grel:valueParameter2, $(country)]
+        condition:
+         function: idlab-fn:notEqual
+         parameters:
+           - [grel:valueParameter, ""]
+           - [grel:valueParameter2, $(country)]
 
   battle_winner:
     sources:
