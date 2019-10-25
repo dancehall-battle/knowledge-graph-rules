@@ -7,9 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [0.0.3] - 2019-10-25
+
+### Added 
+- Link to previous edition of event
+
 ## [0.0.2] - 2019-08-07
 
 ### Added
 - Instagram to events
 
+[0.0.3]: https://github.com/dancehall-battle/knowledge-graph-rules/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/dancehall-battle/knowledge-graph-rules/compare/v0.0.1...v0.0.2
