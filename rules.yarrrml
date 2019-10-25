@@ -51,6 +51,14 @@ mappings:
               parameters:
                 - [str1, $(id)]
                 - [str2, $(eventid)]
+      - p: dhb:previousEdition
+        o:
+          - mapping: event
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(previous-edition)]
+                - [str2, $(id)]
 
   organizer:
     sources:
