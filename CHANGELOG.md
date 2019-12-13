@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Fixed
+- Namespace of dancehall battle ontology (see [issue 5](https://github.com/dancehall-battle/knowledge-graph-rules/issues/5))
+
 ## [0.0.4] - 2019-10-25
 
 ### Added 
