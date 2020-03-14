@@ -92,7 +92,7 @@ mappings:
 
   winner:
     sources:
-      - [files/winners.csv~csv]
+      - [files/people.csv~csv]
     s: dhb-dancer:$(id)
     po:
       - [a, [dhb:Dancer, schema:Person]]
