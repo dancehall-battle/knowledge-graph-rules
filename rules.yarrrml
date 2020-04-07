@@ -6,6 +6,7 @@ prefixes:
   dhb-dancer: https://dancehallbattle.org/dancer/
   dhb-event: https://dancehallbattle.org/event/
   dhb-organizer: https://dancehallbattle.org/organizer/
+  ov: http://open.vocab.org/terms/
 
 mappings:
   event:
@@ -98,6 +99,7 @@ mappings:
       - [a, [dhb:Dancer, schema:Person]]
       - [schema:name, $(name)]
       - [dhb:instagram, $(instagram)]
+      - [ov:twitter-id, $(twitter)]
       - p: dhb:representsCountry
         o: $(country)
         #condition:
