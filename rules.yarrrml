@@ -114,3 +114,10 @@ mappings:
     s: dhb-battle:$(battleid)
     po:
       - [[dhb:hasWinner, dhb:hasParticipant], dhb-dancer:$(winnerid)~iri]
+
+  battle_judge:
+    sources:
+      - [files/battle_judge.csv~csv]
+    s: dhb-battle:$(battleid)
+    po:
+      - [dhb:hasJudge, dhb-dancer:$(judgeid)~iri]
