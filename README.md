@@ -21,6 +21,10 @@
    java -jar rmlmapper-6.5.1-r371-all.jar -m rules.ttl -o data.ttl
    ```
 5. You find the RDF in `data.ttl`.
+6. Convert RDF file to HDT file via
+   ```shell
+   docker run -it --rm -v "$(pwd)":/data rfdhdt/hdt-cpp rdf2hdt -f turtle /data/data.ttl /data/data.hdt
+   ```
 
 ## License
 
