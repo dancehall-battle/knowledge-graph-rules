@@ -1,3 +1,5 @@
 *.jar
 *.ttl
 .idea
+files
+node_modules
