@@ -3,6 +3,6 @@
     "@rmlio/yarrrml-parser": "^1.6.2"
   },
   "scripts": {
-    "rml": "yarrrml-parser -i rules.yarrrml -o rules.tt"
+    "rml": "yarrrml-parser -i rules.yarrrml -o rules.ttl"
   }
 }
