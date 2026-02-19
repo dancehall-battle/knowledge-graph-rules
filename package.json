@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@rmlio/yarrrml-parser": "^1.6.2"
+    "@rmlio/yarrrml-parser": "^1.12.2"
   },
   "scripts": {
     "rml": "yarrrml-parser -i rules.yarrrml -o rules.ttl"
